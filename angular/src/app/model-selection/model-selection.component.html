@@ -6,8 +6,9 @@
     Model
   </button>
   <div class="dropdown-menu">
-    <button class="dropdown-item" type="button">Moscow Times </button>
-    <button class="dropdown-item" type="button">BBC</button>
-    <button class="dropdown-item" type="button">New York Times</button>
+    <button class="dropdown-item" type="button" (click)="setModel('basic')"> Sample Model</button>
+    <button class="dropdown-item" type="button" (click)="setModel('moscow_times')">Moscow Times </button>
+    <button class="dropdown-item" type="button" (click)="setModel('bbc')">BBC</button>
+    <button class="dropdown-item" type="button" (click)="setModel('nyt')">New York Times</button>
   </div>
 </div>

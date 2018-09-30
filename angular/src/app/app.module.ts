@@ -8,6 +8,7 @@ import { ChartsModule } from 'ng4-charts/ng4-charts';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
 import { CorrelationService } from './data/correlation.service';
+import { ModelSelectionService } from './model-selection/model-selection.service';
 import { KeywordMappingService } from './keyword-mapping/keyword-mapping.service';
 import { AnalogyService } from './data/analogy.service';
 import { InfoService } from './info/data/info.service';
@@ -75,6 +76,7 @@ const appRoutes: Routes = [
     KeywordMappingService,
 		AnalogyService,
 		InfoService,
+		ModelSelectionService,
 	],
   bootstrap: [AppComponent]
 })

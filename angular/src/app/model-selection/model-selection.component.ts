@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ModelSelectionService } from './model-selection.service';
 
 @Component({
   selector: 'app-model-selection',
@@ -7,7 +8,13 @@ import { Component } from '@angular/core';
 })
 export class ModelSelectionComponent {
 
-	model: string;
+	model: string = '';
 
-	constructor() { }
+	constructor(private modelService: ModelSelectionService) { }
+
+	setModel(model: string) {
+		this.modelService.setModel(model);
+	}
+
+
 }

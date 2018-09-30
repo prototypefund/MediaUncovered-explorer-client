@@ -3,25 +3,31 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
+import { ModelSelectionService } from '../../model-selection/model-selection.service';
 import { ModelInfo } from './model-info.interface';
 import { CollectionInfo } from './collection-info.interface';
 import { Reliability } from './reliability.interface';
 
 @Injectable()
-export class InfoService{
+export class InfoService {
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		private modelService: ModelSelectionService,) { }
 
 	getModelInfo() {
-		return this.http.get<ModelInfo>(environment.API_URL + 'modelInfo');
+		let model = this.modelService.getModel();
+		return this.http.get<ModelInfo>(environment.API_URL + model + '/modelInfo');
 	}
 
 	getCollectionInfo() {
-		return this.http.get<CollectionInfo>(environment.API_URL + 'info');
+		let model = this.modelService.getModel();
+		return this.http.get<CollectionInfo>(environment.API_URL + model + '/info');
 	}
 
 	getReliability(): Observable<Reliability[]> {
-		const url = environment.API_URL + 'reliability';
+		let model = this.modelService.getModel();
+		const url = environment.API_URL + model + '/reliability';
 		return this.http.get<Reliability[]>(url);
 	}
 }
