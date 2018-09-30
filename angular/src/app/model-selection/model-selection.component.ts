@@ -6,15 +6,22 @@ import { ModelSelectionService } from './model-selection.service';
   templateUrl: './model-selection.component.html',
   styleUrls: ['./model-selection.component.css']
 })
-export class ModelSelectionComponent {
+export class ModelSelectionComponent implements OnInit{
 
-	model: string = '';
+	active_model: string = '';
+	models:  string[] = [];
 
 	constructor(private modelService: ModelSelectionService) { }
+
+	ngOnInit(){
+		this.modelService.getAllModels().
+			subscribe(data => {this.models = data});
+	}
 
 	setModel(model: string) {
 		this.modelService.setModel(model);
 	}
+
 
 
 }
