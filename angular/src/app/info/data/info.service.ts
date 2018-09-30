@@ -17,17 +17,19 @@ export class InfoService {
 
 	getModelInfo() {
 		let model = this.modelService.getModel();
-		return this.http.get<ModelInfo>(environment.API_URL + model + '/modelInfo');
+		const url = environment.API_URL + '/' + model + '/modelInfo';
+		return this.http.get<ModelInfo>(url);
 	}
 
 	getCollectionInfo() {
 		let model = this.modelService.getModel();
-		return this.http.get<CollectionInfo>(environment.API_URL + model + '/info');
+		const url = environment.API_URL + '/' + model + '/info';
+		return this.http.get<CollectionInfo>(url);
 	}
 
 	getReliability(): Observable<Reliability[]> {
 		let model = this.modelService.getModel();
-		const url = environment.API_URL + model + '/reliability';
+		const url = environment.API_URL + '/' + model + '/reliability';
 		return this.http.get<Reliability[]>(url);
 	}
 }
